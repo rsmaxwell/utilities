@@ -11,6 +11,11 @@ public class InvalidHeaderException extends Exception {
     /**
      * 
      */
+    private static final long serialVersionUID = -3310158453592176702L;
+
+    /**
+     * 
+     */
     public InvalidHeaderException() {
         // empty
     }

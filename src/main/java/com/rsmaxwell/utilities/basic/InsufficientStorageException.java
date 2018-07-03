@@ -11,6 +11,11 @@ public class InsufficientStorageException extends Exception {
     /**
      * 
      */
+    private static final long serialVersionUID = 5886992476311709164L;
+
+    /**
+     * 
+     */
     public InsufficientStorageException() {
         // empty
     }

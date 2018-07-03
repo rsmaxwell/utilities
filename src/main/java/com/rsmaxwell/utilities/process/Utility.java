@@ -117,7 +117,7 @@ public class Utility {
      * @throws InterruptedException
      */
     public static ProcessResult runScript(final String scriptName, final File workingDirectory, final List<String> args, final Map<String, String> environment)
-                    throws ProcessFailedException, InterruptedException {
+            throws ProcessFailedException, InterruptedException {
 
         final List<String> command = new ArrayList<String>();
 
@@ -127,8 +127,7 @@ public class Utility {
             command.add("cmd.exe");
             command.add("/C");
             extension = ".bat";
-        }
-        else {
+        } else {
             command.add("bash");
             extension = ".sh";
         }
@@ -155,19 +154,16 @@ public class Utility {
                     line = br.readLine();
                     if (line != null)
                         logger.log(logLevel, "{0} STDOUT: {1}", new Object[] { program, line });
-                }
-                while (line != null);
+                } while (line != null);
                 br.close();
                 br = new BufferedReader(new InputStreamReader(new ByteArrayInputStream(stderr.toByteArray())));
                 do {
                     line = br.readLine();
                     if (line != null)
                         logger.log(logLevel, "{0} STDERR: {1}", new Object[] { program, line });
-                }
-                while (line != null);
+                } while (line != null);
                 br.close();
-            }
-            catch (Exception e) {
+            } catch (Exception e) {
                 // Ignore as it's just logging
             }
     }
@@ -198,8 +194,8 @@ public class Utility {
      * @return result
      * @throws Exception
      */
-    public static ProcessResult buildExecuteAndWaitWithEnvSetting(final String program, final File directory, final String input, final List<String> options,
-                    final Map<String, String> environment) throws Exception {
+    public static ProcessResult buildExecuteAndWaitWithEnvSetting(final String program, final File directory, final String input, final List<String> options, final Map<String, String> environment)
+            throws Exception {
         final ProcessBuilder pb = Utility.buildCommand(program, directory, options);
         pb.environment().putAll(environment);
         return Utility.executeAndWait(pb, program, input, new ByteArrayOutputStream(), new ByteArrayOutputStream());
@@ -260,8 +256,8 @@ public class Utility {
      * @return result.
      * @throws ProcessFailedException
      */
-    public static ProcessResult executeAndWait(final ProcessBuilder pb, final String title, final String input, final OutputStream standardOutputStream,
-                    final OutputStream standardErrorStream) throws ProcessFailedException {
+    public static ProcessResult executeAndWait(final ProcessBuilder pb, final String title, final String input, final OutputStream standardOutputStream, final OutputStream standardErrorStream)
+            throws ProcessFailedException {
 
         InputStream inputStream = null;
         if (input != null) {
@@ -283,7 +279,7 @@ public class Utility {
      * @throws ProcessFailedException
      */
     public static ProcessResult executeAndWait(final ProcessBuilder pb, final String title, final InputStream inputStream, final OutputStream standardOutputStream,
-                    final OutputStream standardErrorStream) throws ProcessFailedException {
+            final OutputStream standardErrorStream) throws ProcessFailedException {
 
         final RunningProcess runningProcess = Utility.executeProcess(pb, title, inputStream, standardOutputStream, standardErrorStream);
         return Utility.waitForProcess(runningProcess);
@@ -301,7 +297,7 @@ public class Utility {
      * @throws ProcessFailedException
      */
     public static RunningProcess executeProcess(final ProcessBuilder pb, final String title, final InputStream inputStream, final OutputStream standardOutputStream,
-                    final OutputStream standardErrorStream) throws ProcessFailedException {
+            final OutputStream standardErrorStream) throws ProcessFailedException {
 
         logger.log(Level.INFO, "command: {0}", ObjectFormatter.format(pb.command()));
 
@@ -325,8 +321,7 @@ public class Utility {
             }
 
             runningProcess = new RunningProcess(pb, process, title, standardInputThread, standardOutputThread, standardErrorThread);
-        }
-        catch (final Exception e) {
+        } catch (final Exception e) {
             // e.printStackTrace();
             logger.log(Level.SEVERE, "caught exception:", e);
             final ProcessFailedException exception2 = new ProcessFailedException(pb, e);
@@ -358,8 +353,7 @@ public class Utility {
             }
 
             processResult = new ProcessResult(exitCode, standardOutputThread, standardErrorThread, standardInputThread);
-        }
-        catch (final InterruptedException e) {
+        } catch (final InterruptedException e) {
             logger.log(Level.SEVERE, "caught exception:", e);
             throw new ProcessFailedException(runningProcess.getProcessBuilder(), e);
         }
@@ -397,8 +391,7 @@ public class Utility {
             program = "cmd.exe";
             argumentList.add("/C");
             argumentList.add("del");
-        }
-        else {
+        } else {
             program = "/usr/bin/sudo";
             argumentList.add("-u");
             argumentList.add(username);
@@ -415,8 +408,7 @@ public class Utility {
     /**
      * Delete all the files in a directory - as a user
      * <p>
-     * NOTE: We run the delete command in a process with the working directory set to prevent the
-     * directory itself being deleted
+     * NOTE: We run the delete command in a process with the working directory set to prevent the directory itself being deleted
      * 
      * @param directoryname
      * @param username
@@ -434,8 +426,7 @@ public class Utility {
             argumentList.add("rd");
             argumentList.add("/S");
             argumentList.add("/Q");
-        }
-        else {
+        } else {
             program = "/usr/bin/sudo";
             argumentList.add("-u");
             argumentList.add(username);
@@ -470,11 +461,12 @@ public class Utility {
 
                 final ProcessBuilder pb = new ProcessBuilder();
                 pb.command(command);
+
+                @SuppressWarnings("unused")
                 ProcessResult result = Utility.executeAndWait(pb, "killProcess");
                 // System.out.println(result.toString());
             }
-        }
-        else {
+        } else {
             final List<String> command = new ArrayList<String>();
             command.add("/usr/bin/sudo");
             command.add("kill");
@@ -486,6 +478,8 @@ public class Utility {
 
             final ProcessBuilder pb = new ProcessBuilder();
             pb.command(command);
+
+            @SuppressWarnings("unused")
             ProcessResult result = Utility.executeAndWait(pb, "killProcess");
             // System.out.println(result.toString());
         }

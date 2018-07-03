@@ -8,12 +8,9 @@ import java.util.regex.Pattern;
 import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 public class Validator {
 
-    private static final Logger logger = LoggerFactory.getLogger(Validator.class);
+    // private static final Logger logger = LoggerFactory.getLogger(Validator.class);
 
     private String fieldName;
     private String string;
@@ -99,8 +96,7 @@ public class Validator {
         try {
             InternetAddress emailAddr = new InternetAddress(string);
             emailAddr.validate();
-        }
-        catch (AddressException e) {
+        } catch (AddressException e) {
             throw new InvalidObjectException("Bad email address: " + e.getClass().getName() + ": " + e.getMessage());
         }
         return validator;
@@ -109,8 +105,7 @@ public class Validator {
     public Validator number() throws InvalidObjectException {
         try {
             this.value = Long.parseLong(string);
-        }
-        catch (NumberFormatException e) {
+        } catch (NumberFormatException e) {
             throw new InvalidObjectException(fieldName + " value " + string + " is not a number");
         }
         return this;

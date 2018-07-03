@@ -11,6 +11,11 @@ public class NotAuthorisedException extends Exception {
     /**
      * 
      */
+    private static final long serialVersionUID = -1045521252838047967L;
+
+    /**
+     * 
+     */
     public NotAuthorisedException() {
         // empty
     }

@@ -11,6 +11,11 @@ public class InvalidStateException extends Exception {
     /**
      * 
      */
+    private static final long serialVersionUID = -7187147231310260462L;
+
+    /**
+     * 
+     */
     public InvalidStateException() {
         // empty
     }
