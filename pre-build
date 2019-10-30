@@ -1,0 +1,19 @@
+#!/bin/bash
+
+set -x
+
+versionfile=./src/main/java/com/rsmaxwell/jenkins/Version.java
+
+pwd
+tree ./src/main/java/com/rsmaxwell
+ls -al ${versionfile}
+
+TIMESTAMP=$(date '+%Y-%m-%d %H:%M:%S')
+
+sed -i "s@<BUILD_ID>@${BUILD_ID}@g"     ${versionfile}
+sed -i "s@<TIMESTAMP>@${TIMESTAMP}@g"   ${versionfile}
+sed -i "s@<GIT_COMMIT>@${GIT_COMMIT}@g" ${versionfile}
+sed -i "s@<GIT_BRANCH>@${GIT_BRANCH}@g" ${versionfile}
+sed -i "s@<GIT_URL>@${GIT_URL}@g"       ${versionfile}
+
+mvn versions:set -DnewVersion=${BUILD_ID}
