@@ -2,18 +2,18 @@
 
 set -x
 
-versionfile=./src/main/java/com/rsmaxwell/utilities/Version.java
-
-if [ ! -f ${versionfile} ]; then
-    echo "Version file not found: ${versionfile}"
-fi
-
 TIMESTAMP=$(date '+%Y-%m-%d %H:%M:%S')
+    
+find . -name "Version.java" | while read versionfile; do
 
-sed -i "s@<BUILD_ID>@${BUILD_ID}@g"     ${versionfile}
-sed -i "s@<TIMESTAMP>@${TIMESTAMP}@g"   ${versionfile}
-sed -i "s@<GIT_COMMIT>@${GIT_COMMIT}@g" ${versionfile}
-sed -i "s@<GIT_BRANCH>@${GIT_BRANCH}@g" ${versionfile}
-sed -i "s@<GIT_URL>@${GIT_URL}@g"       ${versionfile}
+    echo "Replacing tags in ${versionfile}"
+    ls -al ${versionfile}
+
+    sed -i "s@<BUILD_ID>@${BUILD_ID}@g"     ${versionfile}
+    sed -i "s@<TIMESTAMP>@${TIMESTAMP}@g"   ${versionfile}
+    sed -i "s@<GIT_COMMIT>@${GIT_COMMIT}@g" ${versionfile}
+    sed -i "s@<GIT_BRANCH>@${GIT_BRANCH}@g" ${versionfile}
+    sed -i "s@<GIT_URL>@${GIT_URL}@g"       ${versionfile}
+done
 
 mvn versions:set -DnewVersion=${BUILD_ID}
