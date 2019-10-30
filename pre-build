@@ -2,11 +2,11 @@
 
 set -x
 
-versionfile=./src/main/java/com/rsmaxwell/jenkins/Version.java
+versionfile=./src/main/java/com/rsmaxwell/utilities/Version.java
 
-pwd
-tree ./src/main/java/com/rsmaxwell
-ls -al ${versionfile}
+if [ ! -f ${versionfile} ]; then
+    echo "Version file not found: ${versionfile}"
+fi
 
 TIMESTAMP=$(date '+%Y-%m-%d %H:%M:%S')
 
