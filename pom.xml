@@ -7,7 +7,11 @@
 	<version>0.0.1-SNAPSHOT</version>
 
 	<properties>
-		<repository>snapshots</repository>
+		<repository_url>https://server.rsmaxwell.co.uk/archiva/repository</repository_url>
+		<repository>internal</repository>
+		<repositoryid>internal</repositoryid>
+		<snapshot>snapshots</snapshot>
+		<snapshotid>snapshots</snapshotid>
 	</properties>
 
 	<build>
@@ -53,17 +57,15 @@
 
 	<repositories>
 		<repository>
-			<id>MaxwellHouseRelease</id>
-			<name>MaxwellHouse Release</name>
-			<url>http://www.rsmaxwell.co.uk/nexus/repository/releases/</url>
+			<id>internal</id>
+			<url>${repository_url}/${repository}</url>
 			<releases>
 				<updatePolicy>always</updatePolicy>
 			</releases>
 		</repository>
 		<repository>
-			<id>MaxwellHouseSnapshot</id>
-			<name>MaxwellHouse Snapshot</name>
-			<url>http://www.rsmaxwell.co.uk/nexus/repository/snapshots/</url>
+			<id>snapshots</id>
+			<url>${repository_url}/${snapshot}</url>
 			<snapshots>
 				<updatePolicy>always</updatePolicy>
 			</snapshots>
@@ -71,10 +73,13 @@
 	</repositories>
 
 	<distributionManagement>
+		<snapshotRepository>
+			<id>${snapshotid}</id>
+			<url>${repository_url}/${snapshot}</url>
+		</snapshotRepository>
 		<repository>
-			<id>MaxwellHouse</id>
-			<name>MaxwellHouse</name>
-			<url>http://www.rsmaxwell.co.uk/nexus/repository/${repository}/</url>
+			<id>${repositoryid}</id>
+			<url>${repository_url}/${repository}</url>
 		</repository>
 	</distributionManagement>
 
