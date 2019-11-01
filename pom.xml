@@ -2,17 +2,10 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
+
 	<groupId>com.rsmaxwell.utilities</groupId>
 	<artifactId>utilities</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-
-	<properties>
-		<repository_url>https://server.rsmaxwell.co.uk/archiva/repository</repository_url>
-		<repository>internal</repository>
-		<repositoryid>internal</repositoryid>
-		<snapshot>snapshots</snapshot>
-		<snapshotid>snapshots</snapshotid>
-	</properties>
 
 	<build>
 		<plugins>
@@ -58,14 +51,14 @@
 	<repositories>
 		<repository>
 			<id>internal</id>
-			<url>${repository_url}/${repository}</url>
+			<url>https://server.rsmaxwell.co.uk/archiva/repository/internal</url>
 			<releases>
 				<updatePolicy>always</updatePolicy>
 			</releases>
 		</repository>
 		<repository>
 			<id>snapshots</id>
-			<url>${repository_url}/${snapshot}</url>
+			<url>https://server.rsmaxwell.co.uk/archiva/repository/snapshots</url>
 			<snapshots>
 				<updatePolicy>always</updatePolicy>
 			</snapshots>
@@ -73,14 +66,14 @@
 	</repositories>
 
 	<distributionManagement>
-		<snapshotRepository>
-			<id>${snapshotid}</id>
-			<url>${repository_url}/${snapshot}</url>
-		</snapshotRepository>
 		<repository>
-			<id>${repositoryid}</id>
-			<url>${repository_url}/${repository}</url>
+			<id>internal</id>
+			<url>https://server.rsmaxwell.co.uk/archiva/repository/internal</url>
 		</repository>
+		<snapshotRepository>
+			<id>snapshots</id>
+			<url>https://server.rsmaxwell.co.uk/archiva/repository/snapshots</url>
+		</snapshotRepository>
 	</distributionManagement>
 
 </project>
