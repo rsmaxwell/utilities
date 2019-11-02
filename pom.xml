@@ -50,30 +50,30 @@
 
 	<repositories>
 		<repository>
-			<id>internal</id>
-			<url>https://server.rsmaxwell.co.uk/archiva/repository/internal</url>
-			<releases>
-				<updatePolicy>always</updatePolicy>
-			</releases>
-		</repository>
-		<repository>
 			<id>snapshots</id>
 			<url>https://server.rsmaxwell.co.uk/archiva/repository/snapshots</url>
 			<snapshots>
 				<updatePolicy>always</updatePolicy>
 			</snapshots>
 		</repository>
-	</repositories>
-
-	<distributionManagement>
 		<repository>
 			<id>internal</id>
 			<url>https://server.rsmaxwell.co.uk/archiva/repository/internal</url>
+			<releases>
+				<updatePolicy>always</updatePolicy>
+			</releases>
 		</repository>
+	</repositories>
+
+	<distributionManagement>
 		<snapshotRepository>
 			<id>snapshots</id>
 			<url>https://server.rsmaxwell.co.uk/archiva/repository/snapshots</url>
 		</snapshotRepository>
+		<repository>
+			<id>internal</id>
+			<url>https://server.rsmaxwell.co.uk/archiva/repository/internal</url>
+		</repository>
 	</distributionManagement>
 
 </project>
