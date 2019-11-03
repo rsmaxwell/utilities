@@ -1,15 +1,15 @@
-package com.rsmaxwell.utilities.version;
+package com.rsmaxwell.utilities;
 
 public class Version {
 
 	// buildID function
-	public static String buildID() {		
-		return "<BUILD_ID>";
+	public static String version() {		
+		return "<VERSION>";
 	}
 
 	// buildDate function
 	public static String buildDate() {
-		return "<TIMESTAMP>";
+		return "<BUILD_DATE>";
 	}
 
 	// gitCommit function
