@@ -4,7 +4,7 @@ public class Version {
 
 	// buildID function
 	public static String version() {		
-		return "<VERSION>";
+		return "<UTILITIES_VERSION>";
 	}
 
 	// buildDate function
