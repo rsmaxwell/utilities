@@ -12,16 +12,21 @@ packaging="jar"
 # Clean previous built jars
 #*****************************************************************
 pwd
-ls -al 
-ls -al  ./target
-ls -al  ./target/${artifactId}-*
-rm -rf "./target/${artifactId}-*"
+tree -C -L 2 /var/lib/jenkins/workspace/utilities/target
+ls -al /var/lib/jenkins/workspace/utilities/target/${artifactId}-*
+rm -rf /var/lib/jenkins/workspace/utilities/target/${artifactId}-*
 result=$?
 if [ ! $result == 0 ]; then
     echo "$0[${LINENO}]"
     echo "result = $result"
     exit 1
 fi
+
+
+ls -al /var/lib/jenkins/workspace/utilities/target/${artifactId}-*
+
+echo "... exiting ..."
+exit 99
 
 #*****************************************************************
 # Replace tags in the source for the Version class
