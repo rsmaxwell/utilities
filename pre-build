@@ -9,11 +9,8 @@ artifactId="utilities"
 packaging="jar"
 
 #*****************************************************************
-# Clean previous built jars
+# Remove previously built jars
 #*****************************************************************
-pwd
-tree -C -L 2 ./target
-ls -al ./target/${artifactId}-*
 rm -rf ./target/${artifactId}-*
 result=$?
 if [ ! $result == 0 ]; then
@@ -21,12 +18,6 @@ if [ ! $result == 0 ]; then
     echo "result = $result"
     exit 1
 fi
-
-
-ls -al /var/lib/jenkins/workspace/utilities/target/${artifactId}-*
-
-echo "... exiting ..."
-exit 99
 
 #*****************************************************************
 # Replace tags in the source for the Version class
