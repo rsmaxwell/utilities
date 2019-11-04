@@ -13,7 +13,8 @@ packaging="jar"
 #*****************************************************************
 pwd
 ls -al 
-ls -al ./target
+ls -al  ./target
+ls -al  ./target/${artifactId}-*
 rm -rf "./target/${artifactId}-*"
 result=$?
 if [ ! $result == 0 ]; then
