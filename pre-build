@@ -12,9 +12,9 @@ packaging="jar"
 # Clean previous built jars
 #*****************************************************************
 pwd
-tree -C -L 2 /var/lib/jenkins/workspace/utilities/target
-ls -al /var/lib/jenkins/workspace/utilities/target/${artifactId}-*
-rm -rf /var/lib/jenkins/workspace/utilities/target/${artifactId}-*
+tree -C -L 2 ./target
+ls -al ./target/${artifactId}-*
+rm -rf ./target/${artifactId}-*
 result=$?
 if [ ! $result == 0 ]; then
     echo "$0[${LINENO}]"
