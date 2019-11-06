@@ -2,7 +2,7 @@ package com.rsmaxwell.utilities;
 
 public class Version {
 
-	// buildID function
+	// version function
 	public static String version() {		
 		return "<UTILITIES_VERSION>";
 	}
