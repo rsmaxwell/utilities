@@ -57,8 +57,8 @@
 			</snapshots>
 		</repository>
 		<repository>
-			<id>internal</id>
-			<url>https://server.rsmaxwell.co.uk/archiva/repository/internal</url>
+			<id>build</id>
+			<url>https://server.rsmaxwell.co.uk/archiva/repository/build</url>
 			<releases>
 				<updatePolicy>always</updatePolicy>
 			</releases>
@@ -71,8 +71,8 @@
 			<url>https://server.rsmaxwell.co.uk/archiva/repository/snapshots</url>
 		</snapshotRepository>
 		<repository>
-			<id>internal</id>
-			<url>https://server.rsmaxwell.co.uk/archiva/repository/internal</url>
+			<id>build</id>
+			<url>https://server.rsmaxwell.co.uk/archiva/repository/build</url>
 		</repository>
 	</distributionManagement>
 
